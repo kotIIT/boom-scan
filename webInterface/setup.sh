@@ -24,7 +24,8 @@ Install_Config(){
 
 Start_Config(){
   export FLASK_APP=webInterface.py
-  pipenv shell flask run
+  pipenv shell 
+	flask run
 
 }
 
