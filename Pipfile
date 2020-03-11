@@ -4,13 +4,13 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pylint = "*"
 
 [packages]
 pandas = "*"
 matplotlib = "*"
 flask = "*"
-functools = "*"
-requests = "*"
+requests ="*"
 
 [requires]
 python_version = "3"

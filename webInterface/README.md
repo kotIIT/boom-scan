@@ -9,7 +9,8 @@
 ## Automated setup
 
 Run the following in the current directory
-     ./setup.sh
+
+    /setup.sh
 
 ## Contribution
 

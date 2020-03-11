@@ -48,8 +48,12 @@ def index():
 
 
 def hostname():
-    return check_output(['hostname', '-I'])
+    return check_output(['hostname', '-I']).decode('UTF-8')
 
 
 def interface():
-    return check_output(['app/NetInfo.sh'])
+    return check_output(['app/NetInfo.sh']).decode('UTF-8')
+
+
+def gateway():
+    return check_output(['app/getGateway.sh']).decode('UTF-8')
