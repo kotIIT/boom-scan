@@ -1,12 +1,12 @@
-# 2020-team13w
+# Pi-num
 
-## BoomScan
+## ITM-430
 
-Boomscan is a simple and intuitive internal network mapper and vulnerability dashboard for households.
+Pi-num is a simple and intuitive internal network mapper and vulnerability dashboard for households.
 
 It is designed with a focus on IoT Devices found in a "Smart Home" for home automation. This device requires little to no configuration by the user. Simply connect it to the network via an ethernet cable.
 
-### Boomscan Scope
+### Pi-num Scope
 
 * Inside your network:
   * Discover its IP Address
@@ -33,27 +33,7 @@ It is designed with a focus on IoT Devices found in a "Smart Home" for home auto
 
 ## Team Members
 
-|Name|Email|Github|
-|-----|-----|-----|
-|Michael Kotlyar |mkotlyar@hawk.iit.edu |kotIIT|
-|Amairani Lopez |alopez21@hawk.iit.edu |jorell|
-|Jared McVey | jmcvey1@hawk.iit.edu  |Darthseid|
-|Jorell Socorro | jsocorro@hawk.iit.edu |AmairaniL|
+|Name|Github|
+|-----|-----|
+|Michael Kotlyar|kotIIT|
 
-## Contribution
-
-Lines Committed the Project
-
-simply clone the repo and run this script in the terminal
-
-    ./gitstats.sh
-
-March 8
-
-|Lines| User|
-|---|---|
-|3768 | kotIIT|
-|696 |jorell|
-|389 |Darthseid|
-| 48 |AmairaniL|
-|1 |jhajek|
