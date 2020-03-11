@@ -1,8 +1,7 @@
 # Pi-num
 
 ## ITM-430
-Pi-num
-Rasberry **Pi** Network E**num**eration
+**Pi-num**: Rasberry **Pi** Network E**num**eration
 
 Pi-num is a simple and intuitive internal network mapper and vulnerability dashboard for households.
 
