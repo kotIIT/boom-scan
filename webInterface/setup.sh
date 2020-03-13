@@ -16,17 +16,18 @@ local choice
 }
 
 Install_Config(){
-	sudo apt install python python3 python-pip python3-pip npm -y
-	python3 -m  pip install -U pipenv
+	sudo apt install python3 npm -y
+	python3 -m  pip install -U pipenv requests
 	pipenv install
   Start_Config
 }
 
 Start_Config(){
   export FLASK_APP=webInterface.py
-  pipenv shell 
-	flask run
+  pipenv shell flask run
 
 }
+
+
 
 Output

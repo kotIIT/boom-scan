@@ -43,7 +43,12 @@ def index():
         print(os.path.abspath(SCAN_DATA_PATH))
         scanresults = None
 
-    return render_template('index.html', scanresults=scanresults, hostname=hostname(), interface=interface(),
+    return render_template('index.html', 
+                           scanresults=scanresults,
+                           hostname=hostname(),
+                           interface=interface(),
+                           getpublicip=getpublicip(),
+                           gateway=gateway(),
                            Shodan='https://shodan.io/search?query=')
 
 
