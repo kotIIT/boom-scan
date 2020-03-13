@@ -10,7 +10,6 @@ gitStats()
 	sort | uniq -c | sort -rn
 }
 
-#cd ..
 
 
 #Display the options User can Choose from
@@ -21,6 +20,9 @@ function showMenu()
 	echo "Press 1 to view overall contribution " 
 	echo "Press 2 to view contribution in project code"
 	echo "Press 3 to view contribution in the Web Interface "
+	echo "Press 4 to view contribution in the reports"
+	echo
+	echo "Press 5 to exit (or  CTRL+C )"
 	echo "------------------------"
 	
 }
@@ -32,8 +34,10 @@ function Menu()
 	clear 
   	case $choice in
   		1) Overall_Stats;;
-  		2) First_Folder;;
-  		3) Second_Folder;; 		
+  		2) Code_Stats;;
+  		3) Web_Stats;; 		
+		4) Report_Stats;;
+		5) exit 0
 	esac
  }
 
@@ -45,28 +49,37 @@ function Overall_Stats()
 	gitStats	
 }
 
+##this could easily be stored in an array and be much shorter. 
+##Future TODO:
+
 #Function to view project code stats
-function First_Folder()
+function Code_Stats()
 {
 	echo "Code Contribution"
-	local getdir
-	getdir="$(ls -d */ | sed -n 1p)"
-	echo $getdir
-	cd $getdir
+	cd Code
 	gitStats
 	cd ..
 }
 
-function Second_Folder()
+#Function to view Web Interface Stats stats
+function Web_Stats()
 {
-	echo "Code Contribution"
-	local getdir
-	getdir="$(ls -d */ | sed -n 4p)"
-	echo $getdir
-	cd $getdir
+	echo "Web Contribution"
+	cd webInterface
 	gitStats
 	cd ..
 }
+
+#Function to view Web Interface Stats stats
+function Report_Stats()
+{
+	echo "Reports Contribution"
+	cd reports
+	gitStats
+	cd ..
+}
+
+
 
 #Creates a pause within the loop
 #User must press Enter to Continue
@@ -77,6 +90,8 @@ function Pause()
 	read 
 	clear
 }
+
+
 
 while true
 do
