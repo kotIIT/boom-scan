@@ -32,9 +32,6 @@ It is designed with a focus on IoT Devices found in a "Smart Home" for home auto
 
 ----
 
-## Team Members
-
-|Name|Github|
-|-----|-----|
-|Michael Kotlyar|kotIIT|
+## Notes
+This is still in development, and a there's still some work not yet released
 
