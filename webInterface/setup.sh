@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+myIP="$(hostname -I)"
 
 Output(){
 echo "1. to Install Requirements"
@@ -17,14 +18,14 @@ local choice
 
 Install_Config(){
 	sudo apt install python3 npm -y
-	sudo pip3 install -U pipenv requests
+  python3 -m pip install pipenv
 	pipenv install
   Start_Config
 }
 
 Start_Config(){
   export FLASK_APP=webInterface.py
-  python3 -m pipenv shell flask run --host='0.0.0.0'
+  python3 -m pipenv shell flask run --host=$myIP
 
 }
 
