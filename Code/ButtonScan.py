@@ -11,7 +11,7 @@ HTML_OUTPUT_PATH = os.path.join(CURRENT_DIR, 'Scan_Output.html')
 
 
 def run_scan():
-    subprocess.call(['./boomsetupscan.sh'])
+    subprocess.call(['Output/boomsetupscan.sh'])
 
 
 @lru_cache(maxsize=None)
@@ -30,7 +30,6 @@ def scan_xml_to_html():
 
     if not os.path.exists(HTML_OUTPUT_PATH):
         raise FileExistsError(HTML_OUTPUT_PATH)
-
 
 def scan_html_to_webserver_static_html():
     shutil.move(HTML_OUTPUT_PATH, os.path.join(CURRENT_DIR, '../webInterface/app/static/'))

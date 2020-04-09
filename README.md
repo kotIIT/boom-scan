@@ -1,9 +1,8 @@
-# Pi-num
+# boom-scan
 
 ## ITM-430
-**Pi-num**: Rasberry **Pi** Network E**num**eration
 
-Pi-num is a simple and intuitive internal network mapper and vulnerability dashboard for households.
+boom-scan is a simple and intuitive internal network mapper and vulnerability dashboard for households.
 
 It is designed with a focus on IoT Devices found in a "Smart Home" for home automation. This device requires little to no configuration by the user. Simply connect it to the network via an ethernet cable.
 
@@ -25,13 +24,6 @@ It is designed with a focus on IoT Devices found in a "Smart Home" for home auto
   
 ----
 
-### Confirmed PoC
-
-* Printers
-  * Identify Printers with port 9100 open and perform sample remote code execution
-
-----
-
 ## Notes
-This is still in development, and a there's still some work not yet released
 
+This is still in development, and a there's still some work not yet released

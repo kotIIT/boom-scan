@@ -2,17 +2,13 @@
 
 myIP="$(hostname -I)"
 
+choice=$1
 Output(){
-echo "1. to Install Requirements"
-echo "2. to start server"
-echo "3. to exit"
-local choice
-	read -n1 -p "> " choice
-	clear
   	case $choice in
-  		1) Install_Config;;
-  		2) Start_Config;;
-			3) exit 0
+  		i) Install_Config;;
+  		s) Start_Config;;
+			q) exit 0;;
+			*) Menu;;
 		esac
 }
 
@@ -29,6 +25,13 @@ Start_Config(){
 
 }
 
-
+Menu(){
+  echo "i. to Install Requirements"
+  echo "s. to start server"
+  echo "q to quit"
+  local choice
+  read -p "Seclect > " choice
+    Output
+}
 
 Output
