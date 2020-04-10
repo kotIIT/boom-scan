@@ -1,5 +1,5 @@
 import os
-
+import pandas as pd
 from subprocess import check_output
 
 import requests
@@ -56,6 +56,19 @@ def index():
                            gateway=gateway(),
                            Shodan='https://shodan.io/search?query=')
 
+
+def make_device_list():
+     device_list = check_output(['app/boomsetupscan.sh', ''])
+     return device_list
+
+
+def get_device_list():
+    txt_headers = ['IP', 'MAC ADDRESS', 'MANUFACTURER']
+    txt_cols = [0, 1, 4]
+    device_list = pd.read_fwf('Output/Devices.txt', header=None, usecols=txt_cols, names=txt_headers)
+    device_list = device_list.dropna()
+    device_list.to_json(r'Output/Devices.json')
+    return device_list
 
 
 def hostname():
