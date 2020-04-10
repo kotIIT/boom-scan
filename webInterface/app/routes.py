@@ -72,12 +72,12 @@ def get_device_list():
 
 
 def hostname():
-    return check_output(['hostname', '-I']).decode('UTF-8')
+    return check_output(['app/boomsetupscan.sh', 'i']).decode('UTF-8')
 
 
 def interface():
-    return check_output(['app/NetInfo.sh']).decode('UTF-8')
+    return check_output(['app/boomsetupscan.sh', 'iface']).decode('UTF-8')
 
 
 def gateway():
-    return check_output(['app/getGateway.sh']).decode('UTF-8')
+    return check_output(['app/boomsetupscan.sh', 'gate']).decode('UTF-8')

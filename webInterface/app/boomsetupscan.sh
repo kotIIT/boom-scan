@@ -8,7 +8,7 @@ myInterface="$(ip -o -f inet addr show | awk '/scope global/ {print $2}')"
 mySubnet="$(ip -o -f inet addr show | awk '/scope global/ {print $4}')"
 outFile="Output/Devices.txt"
 IPList="Output/IPs.txt"
-
+gateway="$(ip r | awk '/default via/ {print $3}')"
 #get a list of devices on the network
 getDeviceList()
 {
@@ -21,7 +21,6 @@ getDeviceList()
 
     
 }
-
 
 #Perform a scripted network scan to find devices
 #Identify Open Ports
@@ -78,6 +77,8 @@ Output()
         cat $IPList;;
     ip) echo "IP address and subnet is" $myIP;;
     iface) echo "Interface name is:" $myInterface;;
+    sub) echo $mySubnet;;
+    gate) echo $gateway;;
     dl) cat $outFile;;
     d) getDeviceList ;;
     SS |ss) ScanSubnet ;;
