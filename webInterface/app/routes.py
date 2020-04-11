@@ -8,7 +8,7 @@ from flask import render_template
 from app import app
 
 FILE_DIR_PATH = os.path.dirname(__file__)
-SCAN_DATA_PATH = os.path.join(FILE_DIR_PATH, '../../Output/scannedlist.xml')
+SCAN_DATA_PATH = os.path.join(FILE_DIR_PATH, '../Output/scannedsubnet.xml')
 
 
 def getPublicIP():
@@ -21,10 +21,14 @@ def getpublicip():
     return getPublicIP()
 
 
-#@app.route('/api/get_device_list')
+@app.route('/api/make_device_list')
+def makedevicelist():
+    return make_device_list()
 
-    
 
+@app.route('/api/get_device_list')
+def getdevicelist():
+    return get_device_list()
 
 # background process happening without any refreshing
 @app.route('/api/background_process_test')
@@ -58,8 +62,9 @@ def index():
 
 
 def make_device_list():
-     device_list = check_output(['app/boomsetupscan.sh', ''])
-     return device_list
+    check_output(['app/boomsetupscan.sh', 'd']).decode('UTF-8')
+    device_list = check_output(['app/boomsetupscan.sh', 'dl'])
+    return device_list
 
 
 def get_device_list():
