@@ -1,3 +1,4 @@
+import json
 import os
 import pandas as pd
 from subprocess import check_output
@@ -15,8 +16,14 @@ def getPublicIP():
     print("GETPUBLICIP CALLED")
     return requests.get("http://ipecho.net/plain?").text
 
-#@app.route('/api/show_device_list')
-    #SCAN_DATA_PATH
+@app.route('/api/show_device_list')
+def show_device_list() -> dict:
+    f = open('app/Output/Devices.json', 'r')
+    object = json.load(f)
+    f.close()
+
+    return object
+
 
 @app.route('/api/get_public_ip')
 def getpublicip():
