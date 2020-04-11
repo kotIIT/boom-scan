@@ -10,12 +10,13 @@ from app import app
 FILE_DIR_PATH = os.path.dirname(__file__)
 SCAN_DATA_PATH = os.path.join(FILE_DIR_PATH, '../Output/scannedsubnet.xml')
 
-boomscan='sudo', 'app/boomsetupscan.sh',
 
 def getPublicIP():
     print("GETPUBLICIP CALLED")
     return requests.get("http://ipecho.net/plain?").text
 
+#@app.route('/api/show_device_list')
+    #SCAN_DATA_PATH
 
 @app.route('/api/get_public_ip')
 def getpublicip():
@@ -63,17 +64,16 @@ def index():
 
 
 def make_device_list():
-    check_output(['sudo', 'app/boomsetupscan.sh', 'd']).decode('UTF-8')
-    device_list = check_output(['app/boomsetupscan.sh', 'dl'])
+    device_list = check_output(['sudo', 'MakeDevicelist.sh', ])
     return device_list
 
 
 def get_device_list():
     txt_headers = ['IP', 'MAC ADDRESS', 'MANUFACTURER']
     txt_cols = [0, 1, 4]
-    device_list = pd.read_fwf('Output/Devices.txt', header=None, usecols=txt_cols, names=txt_headers)
+    device_list = pd.read_fwf('app/Output/Devices.txt', header=None, usecols=txt_cols, names=txt_headers)
     device_list = device_list.dropna()
-    device_list.to_json(r'Output/Devices.json')
+    device_list.to_json(r'app/Output/Devices.json')
     return device_list
 
 

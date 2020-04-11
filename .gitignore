@@ -1,3 +1,5 @@
 .idea/
-Output/
+/webInterface/app/Output/*
 /webInterface/Pipfile.lock
+/.vscode/
+/webInterface/app/Output/Devices.txt

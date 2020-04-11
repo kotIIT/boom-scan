@@ -1,1 +1,1 @@
-sudo apt install nmap -y
+sudo apt install nmap netdiscover -y

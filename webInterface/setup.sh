@@ -41,7 +41,7 @@ Menu(){
   echo "r. to refresh and update changes"
   echo "q to quit"
   local choice
-  read -p "Seclect > " choice
+  read -p "Select > " choice
     Output
 }
 
