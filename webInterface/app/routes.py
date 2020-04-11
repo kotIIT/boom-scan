@@ -24,6 +24,8 @@ def getpublicip():
 
 @app.route('/api/make_device_list')
 def makedevicelist():
+    print("make_device_list")
+
     return make_device_list()
 
 
