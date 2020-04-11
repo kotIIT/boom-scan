@@ -3,3 +3,7 @@
 /webInterface/Pipfile.lock
 /.vscode/
 /webInterface/Output/Devices.txt
+/webInterface/app/Output.IPs.txt
+/webInterface/app/Output/Devices.txt
+/webInterface/app/Output/IPs.txt
+/webInterface/app/Output/scannedsubnet.xml
