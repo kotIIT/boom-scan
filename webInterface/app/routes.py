@@ -10,6 +10,7 @@ from app import app
 FILE_DIR_PATH = os.path.dirname(__file__)
 SCAN_DATA_PATH = os.path.join(FILE_DIR_PATH, '../Output/scannedsubnet.xml')
 
+boomscan='sudo', 'app/boomsetupscan.sh',
 
 def getPublicIP():
     print("GETPUBLICIP CALLED")
@@ -62,7 +63,7 @@ def index():
 
 
 def make_device_list():
-    check_output(['app/boomsetupscan.sh', 'd']).decode('UTF-8')
+    check_output(['sudo', 'app/boomsetupscan.sh', 'd']).decode('UTF-8')
     device_list = check_output(['app/boomsetupscan.sh', 'dl'])
     return device_list
 
@@ -77,8 +78,7 @@ def get_device_list():
 
 
 def hostname():
-    return check_output(['app/boomsetupscan.sh', 'sub']).decode('UTF-8')
-
+    return check_output(['sudo', 'app/boomsetupscan.sh', 'sub']).decode('UTF-8')
 
 def interface():
     return check_output(['app/boomsetupscan.sh', 'iface']).decode('UTF-8')
