@@ -27,7 +27,7 @@ Update_Packages(){
 
 Start_Config(){
   export FLASK_APP=webInterface.py
-  python3 -m pipenv shell flask run --host=$myIP
+  sudo python3 -m pipenv shell flask run --host=$myIP
 }
 
 Restart_Config(){

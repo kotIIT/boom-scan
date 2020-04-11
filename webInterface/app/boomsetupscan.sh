@@ -13,6 +13,7 @@ gateway="$(ip r | awk '/default via/ {print $3}')"
 getDeviceList()
 {
     echo "Performing ARP Scan..."
+    touch $outFile
     sudo netdiscover -r $mySubnet  -PN > $outFile
     sed  -i '$d' $outFile
     echo "Devices are:"
