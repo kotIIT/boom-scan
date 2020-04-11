@@ -1,5 +1,5 @@
 .idea/
-/webInterface/app/Output/*
+/webInterface/Output/*
 /webInterface/Pipfile.lock
 /.vscode/
-/webInterface/app/Output/Devices.txt
+/webInterface/Output/Devices.txt

@@ -10,4 +10,4 @@ def get_device_list():
     return device_list
 
 
-print(get_device_list())
+#print(get_device_list())

@@ -25,14 +25,16 @@ $(function() {
 
   $('a#devices').on('click', function() {
     $.get('/api/get_device_list',
-        function(data) {;
+        function(data) {
+        window.alert(data);
     });
     return false;
   });
 
   $('a#make').on('click', function() {
     $.get('/api/make_device_list',
-        function(data) {;
+        function(data) {
+        window.alert(data);
     });
     return false;
   });

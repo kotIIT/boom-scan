@@ -16,14 +16,6 @@ def getPublicIP():
     print("GETPUBLICIP CALLED")
     return requests.get("http://ipecho.net/plain?").text
 
-@app.route('/api/show_device_list')
-def show_device_list() -> dict:
-    f = open('app/Output/Devices.json', 'r')
-    object = json.load(f)
-    f.close()
-
-    return object
-
 
 @app.route('/api/get_public_ip')
 def getpublicip():
@@ -37,7 +29,14 @@ def makedevicelist():
 
 @app.route('/api/get_device_list')
 def getdevicelist():
-    return get_device_list()
+    generate_device_list_json()
+
+    f = open('Output/Devices.json', 'r')
+    object = json.load(f)
+    f.close()
+
+    return object
+
 
 # background process happening without any refreshing
 @app.route('/api/background_process_test')
@@ -61,7 +60,7 @@ def index():
         print(os.path.abspath(SCAN_DATA_PATH))
         scanresults = None
 
-    return render_template('index.html', 
+    return render_template('index.html',
                            scanresults=scanresults,
                            hostname=hostname(),
                            interface=interface(),
@@ -71,21 +70,22 @@ def index():
 
 
 def make_device_list():
-    device_list = check_output(['sudo', 'MakeDevicelist.sh', ])
+    print(os.getcwd())
+    device_list = check_output(['sudo', 'bash', '-x', 'app/boomsetupscan.sh', 'd'])
     return device_list
 
 
-def get_device_list():
+def generate_device_list_json():
     txt_headers = ['IP', 'MAC ADDRESS', 'MANUFACTURER']
     txt_cols = [0, 1, 4]
-    device_list = pd.read_fwf('app/Output/Devices.txt', header=None, usecols=txt_cols, names=txt_headers)
+    device_list = pd.read_fwf('Output/Devices.txt', header=None, usecols=txt_cols, names=txt_headers)
     device_list = device_list.dropna()
-    device_list.to_json(r'app/Output/Devices.json')
-    return device_list
+    device_list.to_json(r'Output/Devices.json')
 
 
 def hostname():
     return check_output(['sudo', 'app/boomsetupscan.sh', 'sub']).decode('UTF-8')
+
 
 def interface():
     return check_output(['app/boomsetupscan.sh', 'iface']).decode('UTF-8')
