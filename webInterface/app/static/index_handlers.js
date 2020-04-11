@@ -27,12 +27,21 @@ $(document).ready(function () {
     });
 
     $('a#test').on('click', function () {
-        $.get('/api/background_process_test',
+
+        // disable button ('disabled attr')
+
+        $.get('/api/scan_aggressive',
             function (data) {
                 window.alert(data);
                 console.log(data);
+
             });
+
+        //enable button ('enabled attr')
+
         return false;
+
+
 
     });
 

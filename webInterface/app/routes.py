@@ -12,6 +12,7 @@ FILE_DIR_PATH = os.path.dirname(__file__)
 SCAN_DATA_PATH = os.path.join(FILE_DIR_PATH, '../Output/scannedsubnet.xml')
 
 
+
 def getPublicIP():
     print("GETPUBLICIP CALLED")
     return requests.get("http://ipecho.net/plain?").text
@@ -27,6 +28,15 @@ def makedevicelist():
     print("make_device_list")
 
     return make_device_list()
+
+
+@app.route('/api/scan_aggressive')
+def scanaggressive():
+    print('scanaggressive')
+    subnet_scan_aggressive()
+    print('scanaggressive done')
+
+
 
 
 @app.route('/api/get_device_list')
@@ -91,6 +101,10 @@ def hostname():
 
 def interface():
     return check_output(['app/boomsetupscan.sh', 'iface']).decode('UTF-8')
+
+
+def subnet_scan_aggressive():
+    return check_output(['sudo', 'app/boomsetupscan.sh', 'sl']).decode('UTF-8')
 
 
 def gateway():

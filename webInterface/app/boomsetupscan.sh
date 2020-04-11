@@ -29,10 +29,12 @@ getDeviceList()
 
 ScanSubnet(){
     File="Output/scannedsubnet.xml"
+    newFile="Out/scannedsubnet.html"
     echo 
     echo "Scanning Subnet"
     echo $mySubnet
     sudo nmap $mySubnet -A --open  -A -oX  $File  --webxml
+    xsltproc $File -o $newFile
 }
 
 ScanList(){
