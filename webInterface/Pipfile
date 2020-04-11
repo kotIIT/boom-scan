@@ -10,7 +10,6 @@ pandas = "*"
 flask = "*"
 requests = "*"
 werkzeug = "*"
-pudo = "*"
 
 [requires]
 python_version = "3"

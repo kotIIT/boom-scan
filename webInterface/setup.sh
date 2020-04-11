@@ -6,6 +6,7 @@ choice=$1
 Output(){
   	case $choice in
   		i) Install_Config;;
+      u) Update_Packages;;
   		s) Start_Config;;
       r) Restart_Config;;
 			q) exit 0;;
@@ -14,10 +15,14 @@ Output(){
 }
 
 Install_Config(){
-	sudo apt install python3 npm -y
+  sudo apt install python3 npm -y
   python3 -m pip install pipenv
 	pipenv install
   Start_Config
+}
+
+Update_Packages(){
+  pipenv install
 }
 
 Start_Config(){
@@ -31,6 +36,7 @@ Restart_Config(){
 
 Menu(){
   echo "i. to Install Requirements"
+  echo "u. to Update Server packages"
   echo "s. to start server"
   echo "r. to refresh and update changes"
   echo "q to quit"
