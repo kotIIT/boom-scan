@@ -21,9 +21,9 @@ def getpublicip():
     return getPublicIP()
 
 
-@app.route('/api/get_device_list')
-def get_device_list():
-    return
+#@app.route('/api/get_device_list')
+
+    
 
 
 # background process happening without any refreshing
@@ -72,7 +72,7 @@ def get_device_list():
 
 
 def hostname():
-    return check_output(['app/boomsetupscan.sh', 'i']).decode('UTF-8')
+    return check_output(['app/boomsetupscan.sh', 'sub']).decode('UTF-8')
 
 
 def interface():

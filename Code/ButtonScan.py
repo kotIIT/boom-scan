@@ -17,7 +17,7 @@ def run_scan():
 @lru_cache(maxsize=None)
 def getPublicIP():
     print("GETPUBLICIP CALLED")
-    return (requests.get("http://ipecho.net/plain?").text)
+    return requests.get("http://ipecho.net/plain?").text
 
 
 @lru_cache(maxsize=None)

@@ -75,8 +75,8 @@ Output()
     case  $arg in
     l)echo "List of devices on the network: " 
         cat $IPList;;
-    ip) echo "IP address and subnet is" $myIP;;
-    iface) echo "Interface name is:" $myInterface;;
+    ip) echo $myIP;;
+    iface) echo $myInterface;;
     sub) echo $mySubnet;;
     gate) echo $gateway;;
     dl) cat $outFile;;
