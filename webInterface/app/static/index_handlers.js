@@ -8,8 +8,8 @@ $(document).ready(function () {
     var deviceTable = new Tabulator("#device-table", {
         height: "auto",
         width: "70%",
-        responsiveLayout:"hide",
-        layout:"fitColumns",
+        responsiveLayout: "hide",
+        layout: "fitColumns",
         columns: [
             {title: "     IP Address ", field: "IP"},
             {title: "     Mac Address  ", field: "MAC ADDRESS"},
@@ -29,9 +29,6 @@ $(document).ready(function () {
     });
 
     $('a#test').on('click', function () {
-
-        // disable button ('disabled attr')
-
         $.get('/api/script_scan_list',
             function (data) {
                 window.alert(data);
@@ -39,10 +36,8 @@ $(document).ready(function () {
 
             });
 
-        //enable button ('enabled attr')
 
         return false;
-
 
 
     });
@@ -70,8 +65,6 @@ $(document).ready(function () {
 
     $('a#fast').on('click', function () {
 
-        // disable button ('disabled attr')
-
         $.get('/api/fast_scan_list',
             function (data) {
                 window.alert(data);
@@ -79,24 +72,34 @@ $(document).ready(function () {
 
             });
 
+        return false;
+
+
+    });
+    $('a#iptext').on('click', function () {
+
+        // disable button ('disabled attr')
+
+
+        $.get('/api/xml_output/IPs.txt',
+            function (data) {
+                console.log(data);
+            }
+        )
+
         //enable button ('enabled attr')
 
 
     });
 
-     $('a#ssh').on('click', function () {
-
-        // disable button ('disabled attr')
-
-        $.get('/api/ssh_scan_list',
+    $('a#ssh').on('click', function () {
+        $.get("/api/ssh_scan_list",
             function (data) {
                 window.alert(data);
                 console.log(data);
 
             });
-
-        //enable button ('enabled attr')
-
+        return false;
 
     });
 

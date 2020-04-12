@@ -22,7 +22,7 @@ def getpublicip():
     return getPublicIP()
 
 
-@app.route('/api/xml_output/<path:path>')
+@app.route('/api/Output<path:path>')
 def send_xml_output(path):
     return send_from_directory('../Output/', path)
 
@@ -43,14 +43,14 @@ def script_scan():
 @app.route('/api/fast_scan_list')
 def fast_scan():
     print('Fast port scan')
-    fast_scan_list()
+    return fast_scan_list()
     print('Fast scan done')
 
 
 @app.route('/api/ssh_scan_list')
 def ssh_scan():
     print('ssh port scan')
-    ssh_scan_list()
+    return ssh_scan_list()
     print('ssh scan done')
 
 
@@ -75,20 +75,8 @@ def background_process_test():
 @app.route('/')
 @app.route('/index')
 def index():
-    # scanresults = None
-    #
-    # if os.path.exists(SCAN_DATA_PATH):
-    #     scanresults = ""
-    #     with open(SCAN_DATA_PATH, 'r') as f:
-    #         for line in f:
-    #             scanresults += line
-    # else:
-    #     print("scannedlist.xml does not exist.")
-    #     print(os.path.abspath(SCAN_DATA_PATH))
-    #     scanresults = None
 
     return render_template('index.html',
-                           # scanresults=scanresults,
                            hostname=hostname(),
                            interface=interface(),
                            getpublicip=getpublicip(),
@@ -111,6 +99,7 @@ def generate_device_list_json():
 
 
 def script_scan_list():
+    print(os.getcwd())
     return check_output(['sudo', 'app/boomsetupscan.sh', 'sl']).decode('UTF-8')
 
 

@@ -22,12 +22,6 @@
 
     </ul>
 </div>
-<nav>
-    <ul>
-        <li><a href="{{url_for('static', filename='Scan_Output.html')}}"> View Results! :) </a></li>
-        <li><a id="shodanOpen" href="#"> Check Exposure </a></li>
-    </ul>
-</nav>
 
 <div class='container'>
     <h3>Run Scan</h3>
@@ -47,6 +41,9 @@
         <a href=# id="make">
             <button class='btn btn-default'>List</button>
         </a>
+        <a href=# id="iptext">
+            <button class='btn btn-default'>iptext</button>
+        </a>
     </form>
 
 </div>
@@ -58,17 +55,16 @@
     <div id="device-table"></div>
 </div>
 
-<!-- <div class="container">
-    <p>
-        Scan results:
+<nav>
+    <h2>Results</h2>
+    <ul>
+        <li><a href="{{url_for('static', filename='scannedlist.html')}}"> Detailed Scan </a></li>
+        <li><a href="{{url_for('static', filename='fastportscan.html')}}"> Fast Scan </a></li>
+        <li><a href="{{url_for('static', filename='Port22.html')}}"> SSH Results </a></li>
 
-        <code>
-    <pre>
-    {{scanresults}}
-    </pre>
-        </code>
-    </p>
-</div>
--->
+        <li><a id="shodanOpen" href="#"> Check Exposure </a></li>
+    </ul>
+</nav>
+
 </body>
 </html>

@@ -33,21 +33,21 @@ getDeviceList()
 
 ScanSubnet(){
     File="Output/scannedsubnet.xml"
-    newFile="Output/scannedsubnet.html"
+    newFile="app/static/scannedsubnet.html"
     echo 
     echo "Scanning Subnet"
     echo $mySubnet
-    sudo nmap $mySubnet -A --open  -A -oX  $File  --webxml
+    sudo nmap $mySubnet -A --open  -A -oX  $File
     sudo chmod 755 $File
     xsltproc $File -o $newFile
 }
 
 ScanList(){
     File="Output/scannedlist.xml"
-    newFile="Output/scannedlist.html"
+    newFile="app/static/scannedlist.html"
     echo
     echo "Scanning Listed Devices..."
-    sudo nmap -iL  $IPList -A --open -oX  $File --webxml
+    sudo nmap -iL  $IPList -A --open -oX  $File
     sudo chmod 755 $File
     xsltproc $File -o $newFile
 
@@ -55,18 +55,20 @@ ScanList(){
 
 ScanFast(){
     File="Output/fastportscan.xml"
-    newFile="Output/fastportscan.html"
+    newFile="app/static/fastportscan.html"
     echo
     echo "Scanning Listed Devices..."
-    sudo nmap -iL  $IPList -F  -oX  $File -webxml
+    sudo nmap -iL  $IPList -F  -oX  $File
     sudo chmod 755 $File
     xsltproc $File -o $newFile
 }
 
 ScanPort(){
     File='Output/Port'$arg'.xml'
+    newFile='app/static/Port'$arg'.html'
+    txtOutput='Output/Port'$arg'.txt'
     echo "Scanning for port" $arg
-    nmap -iL  $IPList  -p$arg --open -oX $File --webxml
+    nmap -iL  $IPList  -p$arg --open -oX $File
     sudo chmod 755 $File
     xsltproc $File -o $newFile
 
@@ -101,7 +103,7 @@ Output()
 {
     case  $arg in
     l)echo "List of devices on the network: " 
-        cat $IPList;;
+      cat $IPList;;
     ip) echo $myIP;;
     iface) echo $myInterface;;
     sub) echo $mySubnet;;
