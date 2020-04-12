@@ -26,7 +26,6 @@ def getpublicip():
 @app.route('/api/make_device_list')
 def makedevicelist():
     print("make_device_list")
-
     return make_device_list()
 
 
@@ -66,20 +65,20 @@ def background_process_test():
 @app.route('/')
 @app.route('/index')
 def index():
-    scanresults = None
-
-    if os.path.exists(SCAN_DATA_PATH):
-        scanresults = ""
-        with open(SCAN_DATA_PATH, 'r') as f:
-            for line in f:
-                scanresults += line
-    else:
-        print("scannedlist.xml does not exist.")
-        print(os.path.abspath(SCAN_DATA_PATH))
-        scanresults = None
+    # scanresults = None
+    #
+    # if os.path.exists(SCAN_DATA_PATH):
+    #     scanresults = ""
+    #     with open(SCAN_DATA_PATH, 'r') as f:
+    #         for line in f:
+    #             scanresults += line
+    # else:
+    #     print("scannedlist.xml does not exist.")
+    #     print(os.path.abspath(SCAN_DATA_PATH))
+    #     scanresults = None
 
     return render_template('index.html',
-                           scanresults=scanresults,
+                           # scanresults=scanresults,
                            hostname=hostname(),
                            interface=interface(),
                            getpublicip=getpublicip(),

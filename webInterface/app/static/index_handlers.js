@@ -6,12 +6,14 @@ $(document).ready(function () {
     console.log('cheesie');
 
     var deviceTable = new Tabulator("#device-table", {
-        height: "311px",
-        width:'600px',
+        height: "auto",
+        width: "70%",
+        responsiveLayout:"hide",
+        layout:"fitColumns",
         columns: [
-            {title: "IP", field: "IP"},
-            {title: "MAC ADDRESS", field: "MAC ADDRESS"},
-            {title: "Manufacturer", field: "MANUFACTURER"},
+            {title: "     IP Address ", field: "IP"},
+            {title: "     Mac Address  ", field: "MAC ADDRESS"},
+            {title: "     Device Vendor  ", field: "MANUFACTURER"},
         ],
     });
 
