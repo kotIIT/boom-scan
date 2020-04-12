@@ -8,9 +8,6 @@ from flask import render_template, send_from_directory
 
 from app import app
 
-FILE_DIR_PATH = os.path.dirname(__file__)
-SCAN_DATA_PATH = os.path.join(FILE_DIR_PATH, '../Output/scannedsubnet.xml')
-
 
 def getPublicIP():
     print("GETPUBLICIP CALLED")
@@ -20,12 +17,6 @@ def getPublicIP():
 @app.route('/api/get_public_ip')
 def getpublicip():
     return getPublicIP()
-
-
-@app.route('/api/Output<path:path>')
-def send_xml_output(path):
-    return send_from_directory('../Output/', path)
-
 
 @app.route('/api/make_device_list')
 def makedevicelist():
