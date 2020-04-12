@@ -30,7 +30,7 @@ $(document).ready(function () {
 
         // disable button ('disabled attr')
 
-        $.get('/api/scan_aggressive',
+        $.get('/api/script_scan_list',
             function (data) {
                 window.alert(data);
                 console.log(data);
@@ -64,6 +64,22 @@ $(document).ready(function () {
 
             });
         return false;
+    });
+
+    $('a#fast').on('click', function () {
+
+        // disable button ('disabled attr')
+
+        $.get('/api/fast_scan_list',
+            function (data) {
+                window.alert(data);
+                console.log(data);
+
+            });
+
+        //enable button ('enabled attr')
+
+
     });
 
     $('a#make').on('click', function () {

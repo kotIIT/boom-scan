@@ -30,12 +30,18 @@ def makedevicelist():
     return make_device_list()
 
 
-@app.route('/api/scan_aggressive')
-def scanaggressive():
-    print('scanaggressive')
-    subnet_scan_aggressive()
-    print('scanaggressive done')
+@app.route('/api/script_scan_list')
+def script_scan():
+    print('scripted scan on list')
+    script_scan_list()
+    print('scripted scan done')
 
+
+@app.route('/api/fast_scan_list')
+def fast_scan():
+    print('Fast port scan')
+    fast_scan_list()
+    print('Fast scan done')
 
 
 
@@ -95,16 +101,20 @@ def generate_device_list_json():
     device_list.to_json(r'Output/Devices.json')
 
 
+def script_scan_list():
+    return check_output(['sudo', 'app/boomsetupscan.sh', 'sl']).decode('UTF-8')
+
+
+def fast_scan_list():
+    return check_output(['sudo', 'app/boomsetupscan.sh', 'sf']).decode('UTF-8')
+
+
 def hostname():
     return check_output(['sudo', 'app/boomsetupscan.sh', 'sub']).decode('UTF-8')
 
 
 def interface():
     return check_output(['app/boomsetupscan.sh', 'iface']).decode('UTF-8')
-
-
-def subnet_scan_aggressive():
-    return check_output(['sudo', 'app/boomsetupscan.sh', 'sl']).decode('UTF-8')
 
 
 def gateway():

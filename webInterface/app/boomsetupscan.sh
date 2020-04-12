@@ -6,9 +6,13 @@
 myIP="$(hostname -I)"
 myInterface="$(ip -o -f inet addr show | awk '/scope global/ {print $2}')"
 mySubnet="$(ip -o -f inet addr show | awk '/scope global/ {print $4}')"
+gateway="$(ip r | awk '/default via/ {print $3}')"
+
 outFile="Output/Devices.txt"
 IPList="Output/IPs.txt"
-gateway="$(ip r | awk '/default via/ {print $3}')"
+chmod 755 $outFile
+chmod 755 $IPList
+
 #get a list of devices on the network
 getDeviceList()
 {
@@ -29,19 +33,34 @@ getDeviceList()
 
 ScanSubnet(){
     File="Output/scannedsubnet.xml"
-    newFile="Out/scannedsubnet.html"
+    newFile="Output/scannedsubnet.html"
     echo 
     echo "Scanning Subnet"
     echo $mySubnet
     sudo nmap $mySubnet -A --open  -A -oX  $File  --webxml
+    sudo chmod 755 $File
     xsltproc $File -o $newFile
 }
 
 ScanList(){
-    File="Output/list.xml"
-    echo 
+    File="Output/scannedlist.xml"
+    newFile="Output/scannedlist.html"
+    echo
     echo "Scanning Listed Devices..."
-    sudo nmap -iL  $IPList -sC --open -oX  $File --webxml
+    sudo nmap -iL  $IPList -A --open -oX  $File --webxml
+    sudo chmod 755 $File
+    xsltproc $File -o $newFile
+
+}
+
+ScanFast(){
+    File="Output/portscan.xml"
+    newFile="Output/portscan.html"
+    echo
+    echo "Scanning Listed Devices..."
+    sudo nmap -iL  $IPList -F  $File --webxml
+    sudo chmod 755 $File
+    xsltproc $File -o $newFile
 }
 
 ScanPort(){
@@ -53,6 +72,7 @@ ScanPort(){
     cat $File
     }
 
+
 #create optional menu to run script in terminal
 Menu()
 {
@@ -63,6 +83,7 @@ Menu()
     echo "Enter d. to listen for devices on the network"
     echo "Enter l. to display the devices on the network (must run "d" first)"
     echo "Enter to dl display list of IP Addresses"
+    echo "Enter sf to do a fast port scan of the list"
     echo "Enter sl to perform a scripted scan on the listed devices"
     echo "Enter ss. to scan the entire subnet, perform OS Detection and Scripted Scanning"
 
@@ -84,6 +105,7 @@ Output()
     gate) echo $gateway;;
     dl) cat $outFile;;
     d) getDeviceList ;;
+    sf|SF) ScanFast;;
     SS |ss) ScanSubnet ;;
     SL | sl) ScanList;;
     $1 | m)  Menu;;
