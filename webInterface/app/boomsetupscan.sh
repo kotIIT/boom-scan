@@ -58,7 +58,7 @@ ScanFast(){
     newFile="Output/fastportscan.html"
     echo
     echo "Scanning Listed Devices..."
-    sudo nmap -iL  $IPList -F  -oX  $File
+    sudo nmap -iL  $IPList -F  -oX  $File -webxml
     sudo chmod 755 $File
     xsltproc $File -o $newFile
 }
@@ -66,7 +66,7 @@ ScanFast(){
 ScanPort(){
     File='Output/Port'$arg'.xml'
     echo "Scanning for port" $arg
-    nmap -iL  $IPList  -p$arg --open -oX $File
+    nmap -iL  $IPList  -p$arg --open -oX $File --webxml
     sudo chmod 755 $File
     xsltproc $File -o $newFile
 
