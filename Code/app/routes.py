@@ -23,6 +23,19 @@ def makedevicelist():
     print("make_device_list")
     return make_device_list()
 
+@app.route('/api/get_device_list')
+def getdevicelist():
+    generate_device_list_json()
+
+    f = open('Output/Devices.json', 'r')
+    object = json.load(f)
+    f.close()
+
+    return object
+
+
+
+
 
 @app.route('/api/script_scan_list')
 def script_scan():
@@ -45,15 +58,6 @@ def ssh_scan():
     print('ssh scan done')
 
 
-@app.route('/api/get_device_list')
-def getdevicelist():
-    generate_device_list_json()
-
-    f = open('Output/Devices.json', 'r')
-    object = json.load(f)
-    f.close()
-
-    return object
 
 
 # background process happening without any refreshing
@@ -86,7 +90,7 @@ def generate_device_list_json():
     txt_cols = [0, 1, 4]
     device_list = pd.read_fwf('Output/Devices.txt', header=None, usecols=txt_cols, names=txt_headers)
     device_list = device_list.dropna()
-    device_list.to_json(r'Output/Devices.json')
+    device_list.to_json(r'app/static/Devices.json')
 
 
 def script_scan_list():

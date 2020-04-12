@@ -10,12 +10,13 @@ Output(){
   		s) Start_Config;;
       r) Restart_Config;;
 			q) exit 0;;
+	    c) Clear_Files;;
 			*) Menu;;
 		esac
 }
 
 Install_Config(){
-  sudo apt install python3 npm nmap netdiscover -y
+  sudo apt  install xsltproc libffi-dev libatlas-base-dev lslibbz2-dev liblzma-dev libsqlite3-dev libncurses5-dev libgdbm-dev zlib1g-dev libreadline-dev libssl-dev tk-dev build-essential libncursesw5-dev libc6-dev openssl git python3 npm nmap netdiscover default-jdk -y
   python3 -m pip install pipenv
 	pipenv install
   Start_Config
@@ -34,12 +35,18 @@ Restart_Config(){
   flask run --host=$myIP
 }
 
+Clear_Files(){
+> Output/Devices.txt
+> Output/IPs.txt
+}
+
 Menu(){
   echo "i. to Install Requirements"
   echo "u. to Update Server packages"
   echo "s. to start server"
   echo "r. to refresh and update changes"
   echo "q to quit"
+  echo "c to clear Output files"
   local choice
   read -p "Select > " choice
     Output

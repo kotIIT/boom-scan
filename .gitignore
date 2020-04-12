@@ -8,3 +8,5 @@
 /webInterface/app/Output/IPs.txt
 /webInterface/app/Output/scannedsubnet.xml
 /webInterface/app/Output/Port80.txt
+/Code/Output/Devices.json
+/Code/Output/fastportscan.xml
