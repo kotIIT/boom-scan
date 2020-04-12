@@ -54,22 +54,25 @@ ScanList(){
 }
 
 ScanFast(){
-    File="Output/portscan.xml"
-    newFile="Output/portscan.html"
+    File="Output/fastportscan.xml"
+    newFile="Output/fastportscan.html"
     echo
     echo "Scanning Listed Devices..."
-    sudo nmap -iL  $IPList -F  $File --webxml
+    sudo nmap -iL  $IPList -F  -oX  $File
     sudo chmod 755 $File
     xsltproc $File -o $newFile
 }
 
 ScanPort(){
-    File='Output/Port'$arg'.txt'
+    File='Output/Port'$arg'.xml'
     echo "Scanning for port" $arg
-    nmap -iL  $IPList  -p$arg --open -oG $File >/dev/null
-    gawk -i inplace '/open/{print $2} ' $File
-    sed -i '1d'  $File
-    cat $File
+    nmap -iL  $IPList  -p$arg --open -oX $File
+    sudo chmod 755 $File
+    xsltproc $File -o $newFile
+
+    #gawk -i inplace '/open/{print $2} ' $File
+    #sed -i '1d'  $File
+    #cat $File
     }
 
 

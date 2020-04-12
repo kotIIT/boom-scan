@@ -84,6 +84,22 @@ $(document).ready(function () {
 
     });
 
+     $('a#ssh').on('click', function () {
+
+        // disable button ('disabled attr')
+
+        $.get('/api/ssh_scan_list',
+            function (data) {
+                window.alert(data);
+                console.log(data);
+
+            });
+
+        //enable button ('enabled attr')
+
+
+    });
+
     $('a#make').on('click', function () {
         $.get('/api/make_device_list',
             function (data) {

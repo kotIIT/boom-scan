@@ -10,6 +10,7 @@ pandas = "*"
 flask = "*"
 requests = "*"
 werkzeug = "*"
+nmap = "*"
 
 [requires]
 python_version = "3"

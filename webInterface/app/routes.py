@@ -43,6 +43,14 @@ def fast_scan():
     print('Fast scan done')
 
 
+@app.route('/api/ssh_scan_list')
+def ssh_scan():
+    print('ssh port scan')
+    ssh_scan_list()
+    print('ssh scan done')
+
+
+
 
 @app.route('/api/get_device_list')
 def getdevicelist():
@@ -105,7 +113,13 @@ def script_scan_list():
 
 
 def fast_scan_list():
+    print(os.getcwd())
     return check_output(['sudo', 'app/boomsetupscan.sh', 'sf']).decode('UTF-8')
+
+
+def ssh_scan_list():
+    print(os.getcwd())
+    return check_output(['sudo', 'app/boomsetupscan.sh', '22']).decode('UTF-8')
 
 
 def hostname():
