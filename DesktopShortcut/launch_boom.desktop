@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Launch BoomScan
+Comment=My comment
+Icon=/usr/share/pixmaps/openbox.xpm
+Exec=lxterminal -t "Starting Boom-Scan"  --working-directory=/home/pi/Desktop/boom-scan/Code/ -e ./setup.sh s 
+Type=Application
+Encoding=UTF-8
+Terminal=false
+Categories=None

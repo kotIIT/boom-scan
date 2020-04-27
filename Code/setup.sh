@@ -18,12 +18,12 @@ Output(){
 Install_Config(){
   sudo apt  install xsltproc libffi-dev libatlas-base-dev lslibbz2-dev liblzma-dev libsqlite3-dev libncurses5-dev libgdbm-dev zlib1g-dev libreadline-dev libssl-dev tk-dev build-essential libncursesw5-dev libc6-dev openssl git python3 npm nmap netdiscover default-jdk -y
   python3 -m pip install pipenv
-	pipenv install
+	pipenv install --skip-lock
   Start_Config
 }
 
 Update_Packages(){
-  pipenv install
+  pipenv install --skip-lock
 }
 
 Start_Config(){

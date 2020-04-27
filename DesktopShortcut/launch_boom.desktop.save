@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=LaunchBoom
+Comment=start boom-scan server
+Icon=/usr/share/icons/PiXflat/192x192/mimetypes
+Exec=
+Type=Application
+Encoding=UTF-8
+Terminal=false
+Categories=None;

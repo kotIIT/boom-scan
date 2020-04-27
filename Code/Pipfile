@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 pandas = "*"
-flask = "*"
+Flask = "*"
 requests = "*"
 werkzeug = "*"
 numpy = "*"

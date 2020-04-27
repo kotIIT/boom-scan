@@ -21,11 +21,11 @@ Run the following in the current directory
 
 ## Raspberry Pi Via SSH
 
-ssh pi@<raspberryIP>
+ssh pi@(raspberryIP)
 
 ## Raspberry Pi via VNC
 
-open VNC and select pi@<raspberryIP> 5900
+open VNC and select pi@(raspberryIP) 5900
 
 
 ## Web Access
